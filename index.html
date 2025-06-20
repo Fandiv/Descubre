@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ingreso de Meda 💕</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+     .floating-heart {
+      position: absolute;
+      font-size: 18px;
+      color: #ff6b9a;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(1); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffe6f0, #ffc2d1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+     .container {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      padding: 40px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      color: #ff4f81;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 80%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #ff4f81;
+      color: #fff;
+      border: none;
+      padding: 12px 150px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e73c70;
+    }
+
+    .error {
+      color: #ff0000;
+      font-size: 0.9em;
+      margin-top: 10px;
+    }
+
+    .image-placeholder {
+      width: 80px;
+      height: 80px;
+      margin: 10px auto;
+      background-color: #ffe0ec;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      color: #ff4f81;
+    }
+
+    .floating-img {
+      position: absolute;
+      z-index: 1;
+    }
+
+    /* Posiciones de ejemplo: ajústalas a gusto */
+    .img1 { top: 10%; left: 3%; width: 100px; }
+    .img2 { top: 5%; right: 0%; width: 180px; }
+    .img3 { bottom: 10%; left: 10%; width: 100px; }
+    .img4 { bottom: 30%; right: 10%; width: 100px; }
+    .img5 { top: 50%; left: 5%; width: 210px; }
+    .img6 { top: 30%; right: 15%; width: 150px; }
+    .img7 { top: 30%; left: 15%; width: 120px; }
+    .img8 { bottom: 5%; right: 20%; width: 150px; }
+  </style>
+</head>
+<body>
+  <script>
+    for (let i = 0; i < 40; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (3 + Math.random() * 5) + 's';
+      heart.innerHTML = Math.random() > 0.5 ? '❤️' : '💗';
+      document.body.appendChild(heart);
+    }
+
+    function descargarMensaje() {
+      const texto = document.getElementById('mensajeAmor').value;
+      const blob = new Blob([texto], { type: 'text/plain' });
+      const link = document.createElement('a');
+      link.download = 'mensaje_para_mi_amor.txt';
+      link.href = URL.createObjectURL(blob);
+      link.click();
+    }
+  </script>
+  <!-- IMÁGENES PNG FLOTANTES -->
+  <img src="images/Vector-1.png" class="floating-img img1" alt="decor 1">
+  <img src="images/Light.png" class="floating-img img2" alt="decor 2">
+  <img src="images/Vectorcora_.png" class="floating-img img3" alt="decor 3">
+  <img src="images/Vector-2.png" class="floating-img img4" alt="decor 4">
+  <img src="images/Vector-6.png" class="floating-img img5" alt="decor 5">
+  <img src="images/Vector-5.png" class="floating-img img6" alt="decor 6">
+  <img src="images/Vector-4.png" class="floating-img img7" alt="decor 7">
+  <img src="images/Vectorpastel.png" class="floating-img img8" alt="decor 8">
+
+  <div class="container">
+    <div class="image-placeholder">💌</div>
+    <h1>Bienvenida Medali 💖</h1>
+    <form id="loginForm">
+      <input type="text" id="nombre" placeholder="Escribe tu primer nombre" required><br>
+      <input type="text" id="lugar" placeholder="¿Dónde nos vimos por primera vez?" required><br>
+      <input type="text" id="dia" placeholder="¿Qué número es nuestra fecha?" required><br>
+      <input type="text" id="cerro" placeholder="¿A dónde fuimos en la adolescencia?" required><br>
+      <button type="submit">Entrar</button>
+      <div class="error" id="error"></div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim().toLowerCase();
+      const lugar = document.getElementById('lugar').value.trim().toLowerCase();
+      const dia = document.getElementById('dia').value.trim();
+      const cerro = document.getElementById('cerro').value.trim().toLowerCase();
+      const error = document.getElementById('error');
+
+      if (
+        nombre === 'medali' &&
+        lugar === 'el sequion' &&
+        dia === '12' &&
+        cerro === 'cerro azul'
+      ) {
+        window.location.href = 'amor.html';
+      } else {
+        error.textContent = 'Datos incorrectos. Intenta de nuevo con amor ❤️';
+      }
+    });
+  </script>
+</body>
+</html>
